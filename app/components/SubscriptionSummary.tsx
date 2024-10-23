@@ -9,8 +9,8 @@ export default function SubscriptionSummary() {
           <p className="text-3xl font-bold">100000 USD</p>
         </div>
         <div className="second">
-          <div className="bg-white p-3 rounded-full shadow-lg">
-            <IoIosAdd size={20} className="cursor-pointer"/>
+          <div className="bg-white p-3 rounded-full shadow-lg cursor-pointer">
+            <IoIosAdd size={20}/>
           </div>
         </div>
       </div>
