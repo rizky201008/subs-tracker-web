@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Loading } from "./Loading";
+import { SubscriptionItem } from "./SubscriptionItem";
 
 export default function SubscriptionList() {
   const [list, setList] = useState<number[]>([]);
@@ -23,12 +24,5 @@ export default function SubscriptionList() {
   if (loading) {
     return <Loading size={"md"} type={0} />;
   }
-  return list.map((item, key) => (
-    <div className="card bg-[#EFDB91] w-full max-w-4xl shadow-lg" key={key}>
-      <div className="card-body">
-        <h2 className="card-title">Netflix</h2>
-        <p>100 USD {"(Monthly)"}</p>
-      </div>
-    </div>
-  ));
+  return list.map((item, key) => <SubscriptionItem key={key} data={item} />);
 }
