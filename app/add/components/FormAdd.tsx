@@ -1,17 +1,21 @@
 "use client";
 
+import { ColorPicker } from "@/app/components/ColorPicker";
 import { Input } from "@/app/components/Input";
 import { InputSelect } from "@/app/components/InputSelect";
 import { InputSwitch } from "@/app/components/InputSwitch";
+import { SubscriptionItem } from "@/app/components/SubscriptionItem";
 import { useState } from "react";
 
 export const FormAdd = () => {
+  const colors = ["#EFDB91", "#FF9F9F", "#AED9E0", "#B5EAD7", "#FFD3B5"];
   const [data, setData] = useState({
     platform: "",
     fee: "",
     date: "",
     cycle: "",
     remind: false,
+    color: "#EFDB91",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +31,7 @@ export const FormAdd = () => {
   };
 
   return (
-    <>
+    <div className="max-w-4xl w-full">
       <Input
         name="platform"
         placeholder="Netflix"
@@ -68,7 +72,19 @@ export const FormAdd = () => {
         selected={data.remind}
       />
       <div className="h-8"></div>
-      <button className="btn btn-primary w-full max-w-4xl">Save</button>
-    </>
+      <h3 className="text-md font-semibold text-start w-full">Preview</h3>
+      <div className="flex flex-row items-start w-full my-2 gap-3">
+        {colors.map((color, index) => (
+          <ColorPicker
+            onClick={() => setData({ ...data, color })}
+            key={index}
+            color={color}
+            active={data.color === color}
+          />
+        ))}
+      </div>
+      <SubscriptionItem data={1} />
+      <button className="btn btn-primary w-full my-3">Save</button>
+    </div>
   );
 };
